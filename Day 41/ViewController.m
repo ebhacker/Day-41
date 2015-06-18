@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic) NSString *accessTooken;
+@property(nonatomic) NSMutableArray *photos;
 
 @end
 @implementation ViewController
@@ -31,7 +32,9 @@
         
     [SimpleAuth authorize:@"instagram" completion:^(NSDictionary *responseObject, NSError *error) {
        
-        self.accessTooken = responseObject[@"credentials"] [@"tooken"];
+        self.accessTooken = responseObject[@"credentials"] [@"token"];
+        
+        NSLog(@"access token = %@", self.accessTooken); 
         [userDefaults setObject:self.accessTooken forKey:@"accessTooken"];
         [userDefaults synchronize];
         
@@ -61,23 +64,29 @@
 
 -(void) downloadImages {
     NSURLSession *sessions = [NSURLSession sharedSession];
-    NSString  *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/{Kazkhstan}/media/recent?access_token=ACCESS-%@",self.accessTooken];
-   // NSLog(@"%@",urlString);
+    NSString  *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/cars/media/recent?access_token=%@",self.accessTooken];
+    NSLog(@"%@",urlString);
     NSURL *url = [[NSURL alloc] initWithString:urlString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
     NSURLSessionDownloadTask *task = [sessions downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        //NSLog(@"response is : %@",response);
+        NSLog(@"response is : %@",response);
         
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         NSLog(@"response dictionary is : %@",responseDictionary);
         
+        self.photos = responseDictionary[@"data"];
         
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [self.collectionView reloadData];
+        });
         
-        [task resume];
+       
         
     }];
+    
+     [task resume];
                                       
 }
 
@@ -89,13 +98,17 @@
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return [self.photos count];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     //return newly  created Cell
     PhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageNamed:@"car_image.jpg"];
+ //  cell.imageView.image = [UIImage imageNamed:@"car_image.jpg"];
+    
+    
+    NSDictionary *photo = self.photos[indexPath.row];
+    cell.photo = photo;
     return cell;
     
     

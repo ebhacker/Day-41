@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		54E4F9E76AF5475B4E13C8ED /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D69032B5ABE0527DCB9ABD72 /* libPods.a */; };
+		EC140A2E1B32E17A0008D69B /* PhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC140A2D1B32E17A0008D69B /* PhotoController.m */; };
 		EC4982381B31423D00002B70 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EC4982371B31423D00002B70 /* main.m */; };
 		EC49823B1B31423D00002B70 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC49823A1B31423D00002B70 /* AppDelegate.m */; };
 		EC49823E1B31423D00002B70 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC49823D1B31423D00002B70 /* ViewController.m */; };
@@ -33,6 +34,8 @@
 		4FADF31B2AEF21A735D77412 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8EDE89E5847B7C4E6D378F33 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D69032B5ABE0527DCB9ABD72 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC140A2C1B32E17A0008D69B /* PhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoController.h; sourceTree = "<group>"; };
+		EC140A2D1B32E17A0008D69B /* PhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoController.m; sourceTree = "<group>"; };
 		EC4982321B31423D00002B70 /* Day 41.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day 41.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC4982361B31423D00002B70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC4982371B31423D00002B70 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				EC4982441B31423D00002B70 /* LaunchScreen.xib */,
 				EC4982351B31423D00002B70 /* Supporting Files */,
 				EC49825E1B314D9A00002B70 /* car_image.jpg */,
+				EC140A2C1B32E17A0008D69B /* PhotoController.h */,
+				EC140A2D1B32E17A0008D69B /* PhotoController.m */,
 			);
 			path = "Day 41";
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 				EC49825D1B31461700002B70 /* PhotoCollectionViewCell.m in Sources */,
 				EC49823B1B31423D00002B70 /* AppDelegate.m in Sources */,
 				EC4982381B31423D00002B70 /* main.m in Sources */,
+				EC140A2E1B32E17A0008D69B /* PhotoController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,7 +52,11 @@
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         UIImage *image = [[UIImage alloc] initWithData:data];
-        self.imageView.image = image;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+        self.imageView.image = image;   
+        });
+        
     }];
     
     [task resume];
